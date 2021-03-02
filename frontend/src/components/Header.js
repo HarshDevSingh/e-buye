@@ -7,26 +7,34 @@ import {
   Button,
   Container,
 } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+
 const Header = () => {
   return (
     <header>
       <Navbar bg="light" expand="lg" collapseOnSelect>
         <Container>
-          <Navbar.Brand href="/">E-buyee</Navbar.Brand>
+          <LinkContainer to="/">
+            <Navbar.Brand>E-buyee</Navbar.Brand>
+          </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/cart">
-                <i
-                  className="fas fa-shopping-cart"
-                  style={{ paddingRight: "3px" }}
-                ></i>
-                Cart
-              </Nav.Link>
-              <Nav.Link href="/login">
-                <i className="fas fa-user" style={{ paddingRight: "3px" }} />
-                Login
-              </Nav.Link>
+              <LinkContainer to="/cart">
+                <Nav.Link>
+                  <i
+                    className="fas fa-shopping-cart"
+                    style={{ paddingRight: "4px" }}
+                  ></i>
+                  Cart
+                </Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/login">
+                <Nav.Link>
+                  <i className="fas fa-user" style={{ paddingRight: "4px" }} />
+                  Login
+                </Nav.Link>
+              </LinkContainer>
             </Nav>
             <Form inline>
               <FormControl

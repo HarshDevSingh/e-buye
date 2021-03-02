@@ -9,7 +9,7 @@ export const Products = [
     category: "Electronics",
     price: 89.76,
     countInStock: 120,
-    rating: 4.6,
+    rating: 2,
     numReviews: 10,
   },
   {
@@ -21,8 +21,8 @@ export const Products = [
     brand: "Apple",
     category: "Electronics",
     price: 1189.76,
-    countInStock: 12,
-    rating: 4.5,
+    countInStock: 0,
+    rating: 3.5,
     numReviews: 47,
   },
   {
@@ -35,7 +35,7 @@ export const Products = [
     category: "Electronics",
     price: 89.76,
     countInStock: 120,
-    rating: 3.5,
+    rating: 1,
     numReviews: 35,
   },
   {
@@ -61,7 +61,7 @@ export const Products = [
     category: "Electronics",
     price: 1189.76,
     countInStock: 12,
-    rating: 5.0,
+    rating: 4.0,
     numReviews: 0,
   },
 ];
