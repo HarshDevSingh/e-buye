@@ -29,7 +29,7 @@ export const listProductDetails = (id) => async (dispatch) => {
     const { data } = await axios.get(`/api/products/${id}/`);
     dispatch({ type: PRDUCT_DETAIL_SUCCESS, payload: data });
   } catch (error) {
-    const msg = `${error.response.status}  ${error.response.statusText}`;
+    const msg = `${error.response.status}  ${error.response.data.details}`;
     dispatch({
       type: PRDUCT_DETAIL_FAIL,
       payload: msg ? msg : "something went wrong",

@@ -11,6 +11,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 from django.contrib.auth.hashers import make_password
 
+
 @api_view(['GET'])
 def getProducts(request):
     products = Product.objects.all()
@@ -20,6 +21,9 @@ def getProducts(request):
 
 @api_view(['GET'])
 def getProduct(request, pk):
-    product = Product.objects.get(_id=pk)
-    serializer = ProductSerialiser(product, many=False)
-    return Response(serializer.data, status=status.HTTP_200_OK)
+    try:
+        product = Product.objects.get(_id=pk)
+        serializer = ProductSerialiser(product, many=False)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except:
+        return Response({'details': "product doesn't exists"}, status=status.HTTP_404_NOT_FOUND)

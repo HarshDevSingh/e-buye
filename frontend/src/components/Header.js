@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../actions/userActions";
 import {
   Navbar,
   Nav,
@@ -6,10 +8,17 @@ import {
   Form,
   Button,
   Container,
+  NavDropdown,
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 const Header = () => {
+  const userLogin = useSelector((state) => state.userLogin);
+  const dispatch = useDispatch();
+  const logoutHandler = (e) => {
+    dispatch(logout());
+  };
+  const { userInfo } = userLogin;
   return (
     <header>
       <Navbar bg="light" expand="lg" collapseOnSelect>
@@ -29,12 +38,26 @@ const Header = () => {
                   Cart
                 </Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/login">
-                <Nav.Link>
-                  <i className="fas fa-user" style={{ paddingRight: "4px" }} />
-                  Login
-                </Nav.Link>
-              </LinkContainer>
+              {userInfo ? (
+                <NavDropdown title={userInfo.name} id="username">
+                  <LinkContainer to="/profile">
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </LinkContainer>
+                  <NavDropdown.Item onClick={logoutHandler}>
+                    Logout
+                  </NavDropdown.Item>
+                </NavDropdown>
+              ) : (
+                <LinkContainer to="/login">
+                  <Nav.Link>
+                    <i
+                      className="fas fa-user"
+                      style={{ paddingRight: "4px" }}
+                    />
+                    Login
+                  </Nav.Link>
+                </LinkContainer>
+              )}
             </Nav>
             <Form inline>
               <FormControl
