@@ -4,12 +4,8 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from base.serializers import ProductSerialiser
 
-from django.contrib.auth.models import User
 from base.models import Product
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.views import TokenObtainPairView
 
-from django.contrib.auth.hashers import make_password
 
 
 @api_view(['GET'])
